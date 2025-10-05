@@ -29,12 +29,12 @@ with st.sidebar:
     api_key = st.text_input("Google API Key", type="password", value=os.getenv("GOOGLE_API_KEY", ""))
 
     # Tombol reset
-    if st.button("🔄 Mulai Ulang", use_container_width=True):
+    if st.button("Mulai Ulang", use_container_width=True):
         st.session_state.clear()
         st.rerun()
 
     st.divider()
-    st.caption("Contoh pertanyaan:")
+    st.caption("Rekomendasi pertanyaan:")
     examples = [
         "Apa saja gejala PCOS yang umum?",
         "Apakah PCOS memengaruhi kesuburan?",
@@ -60,8 +60,8 @@ os.environ["GOOGLE_API_KEY"] = api_key
 # 2) Model LLM
 # =========================
 llm = ChatGoogleGenerativeAI(
-    model="gemini-2.0-flash",   # cepat & cukup untuk edukasi
-    temperature=0.3,            # lebih konsisten/aman untuk topik medis
+    model="gemini-2.0-flash",   
+    temperature=0.3,            
     max_output_tokens=1024
 )
 
